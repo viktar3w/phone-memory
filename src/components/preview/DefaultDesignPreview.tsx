@@ -125,8 +125,7 @@ const DefaultDesignPreview = ({ configuration }: DefaultDesignPreviewProps) => {
                     <p className="text-gray-600">Base price</p>
                     <p className="text-gray-900 font-medium">
                       {formatPrice(
-                        FINISHES.options.find((o) => o.value === finish)!
-                          .price / 100,
+                          (FINISHES.options.find((o) => o.value === finish)?.price || 0) / 100,
                       )}
                     </p>
                   </div>
@@ -136,8 +135,7 @@ const DefaultDesignPreview = ({ configuration }: DefaultDesignPreviewProps) => {
                     <p className="text-gray-600">Soft polycarbonate</p>
                     <p className="text-gray-900 font-medium">
                       {formatPrice(
-                        MATERIALS.options.find((o) => o.value === material)!
-                          .price / 100,
+                        (MATERIALS.options.find((o) => o.value === material)?.price || 0) / 100,
                       )}
                     </p>
                   </div>

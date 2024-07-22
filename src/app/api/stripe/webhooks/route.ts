@@ -4,9 +4,9 @@ import Stripe from "stripe";
 import { db } from "@/db";
 import { NextResponse } from "next/server";
 
-const POST = async (reg: Request) => {
+export async function POST(req: Request) {
   try {
-    const body = await reg.text();
+    const body = await req.text();
     const signature = headers().get("stripe-signature");
     if (!signature) {
       return new Response("Invalid signature", { status: 400 });
@@ -67,6 +67,4 @@ const POST = async (reg: Request) => {
     { message: "Something was wrong!", ok: false },
     { status: 500 },
   );
-};
-
-export default POST;
+}

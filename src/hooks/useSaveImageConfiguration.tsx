@@ -25,10 +25,7 @@ type SaveImageConfigurationProps = {
   };
 };
 type OptionType = {
-  color: DesignItemType;
-  model: DesignItemType;
-  material: SellingItemType;
-  finish: SellingItemType;
+  [key: string]: SellingItemType
 };
 export const useSaveImageConfiguration = ({
   configId,

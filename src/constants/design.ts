@@ -11,7 +11,7 @@ export type DesignItemType = {
 };
 
 export type SellingItemType = {
-  price: number;
+  price?: number;
   description?: string;
 } & DesignItemType;
 

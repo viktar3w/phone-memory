@@ -8,11 +8,9 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   COLORS,
-  DesignItemType,
   MODELS,
   FINISHES,
-  MATERIALS,
-  SellingItemType,
+  MATERIALS
 } from "@/constants/design";
 import { Label } from "@/components/ui/label";
 import {
@@ -35,12 +33,6 @@ type DesignConfiguratorProps = {
     height: number;
   };
 };
-type OptionType = {
-  color: DesignItemType;
-  model: DesignItemType;
-  material: SellingItemType;
-  finish: SellingItemType;
-};
 const DesignConfigurator = ({
   configId,
   imgUrl,
@@ -57,6 +49,7 @@ const DesignConfigurator = ({
     containerRef,
     saveConfig,
   } = useSaveImageConfiguration({ configId, imgUrl, imgDimensions });
+  // @ts-ignore
   return (
     <div className="relative mt-20 grid grid-cols-1 lg:grid-cols-3 mb-20 pb-20">
       <div
@@ -80,7 +73,7 @@ const DesignConfigurator = ({
           <div
             className={cn(
               "absolute inset-0 left-[3px] top-px right-[3px] bottom-px rounded-[32px]",
-              `bg-${options.color.tw}`,
+              `bg-${options!.color!.tw}`,
             )}
           />
         </div>
@@ -133,7 +126,7 @@ const DesignConfigurator = ({
             <div className="relative mt-4 h-full flex flex-col justify-between">
               <div className="flex flex-col gap-6">
                 <RadioGroup
-                  value={options.color}
+                  value={options!.color}
                   onChange={(color) => {
                     setOptions((prev) => ({
                       ...prev,
@@ -141,7 +134,7 @@ const DesignConfigurator = ({
                     }));
                   }}
                 >
-                  <Label>Color: {options.color.label}</Label>
+                  <Label>Color: {options!.color!.label}</Label>
                   <div className="mt-3 flex items-center space-x-3">
                     {COLORS.map((color) => (
                       <RadioGroup.Option
@@ -175,7 +168,7 @@ const DesignConfigurator = ({
                         role="combobox"
                         className="w-full justify-between"
                       >
-                        {options.model.label}
+                        {options!.model!.label}
                         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                       </Button>
                     </DropdownMenuTrigger>
@@ -187,7 +180,7 @@ const DesignConfigurator = ({
                             "flex text-sm gap-1 items-center p-1.5 cursor-default hover:bg-zinc-100",
                             {
                               "bg-zinc-100":
-                                model.value === options.model.value,
+                                model.value === options!.model!.value,
                             },
                           )}
                           onClick={() => {
@@ -200,7 +193,7 @@ const DesignConfigurator = ({
                           <Check
                             className={cn(
                               "mr-2 h-4 w-4",
-                              model.value === options.model.value
+                              model.value === options!.model!.value
                                 ? "opacity-100"
                                 : "opacity-0",
                             )}
@@ -263,7 +256,7 @@ const DesignConfigurator = ({
                               className="mt-2 flex text-sm sm:ml-4 sm:mt-0 sm:flex-col sm:text-right"
                             >
                               <span className="font-medium text-gray-900">
-                                {formatPrice(option.price / 100)}
+                                {formatPrice((option?.price || 0) / 100)}
                               </span>
                             </RadioGroup.Description>
                           </RadioGroup.Option>
@@ -282,7 +275,9 @@ const DesignConfigurator = ({
             <div className="w-full flex gap-6 items-center">
               <p className="font-medium whitespace-nowrap">
                 {formatPrice(
-                  (BASE_PRICE + options.finish.price + options.material.price) /
+                  (BASE_PRICE +
+                    Number(options?.finish?.price || 0) +
+                    Number(options?.material?.price || 0)) /
                     100,
                 )}
               </p>
@@ -292,10 +287,10 @@ const DesignConfigurator = ({
                 onClick={() =>
                   saveConfig({
                     configId,
-                    color: options.color.value,
-                    finish: options.finish.value,
-                    material: options.material.value,
-                    model: options.model.value,
+                    color: options!.color!.value,
+                    finish: options!.finish!.value,
+                    material: options!.material!.value,
+                    model: options!.model!.value,
                   } as ConfigImageType)
                 }
               >

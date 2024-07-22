@@ -16,12 +16,10 @@ const Page = () => {
   const { startUpload, isUploading } = useUploadThing("imageUploader", {
     onClientUploadComplete: ([data]) => {
       const configId = data.serverData.configId;
-      console.log(11111, configId)
       if (!configId) {
         return;
       }
       startTransition(() => {
-        console.log(22222, configId)
         push(`/configure/design?id=${configId}`);
       });
     },
