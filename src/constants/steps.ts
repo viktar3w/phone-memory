@@ -1,3 +1,4 @@
+export const CONFIGURE_ID_KEY = "configurationId";
 export type StepType = {
     name: string
     description: string

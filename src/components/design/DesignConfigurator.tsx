@@ -25,6 +25,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, ChevronsUpDown } from "lucide-react";
 import { BASE_PRICE } from "@/configs/product";
 import { useSaveImageConfiguration } from "@/hooks/useSaveImageConfiguration";
+import { ConfigImageType } from "@/types/design";
 
 type DesignConfiguratorProps = {
   configId: string;
@@ -214,7 +215,7 @@ const DesignConfigurator = ({
                   ({ options: selectableOptions, name }) => (
                     <RadioGroup
                       key={name}
-                      value={options[name]}
+                      value={options?.[name]}
                       onChange={(val) => {
                         setOptions((prev) => ({
                           ...prev,
@@ -295,7 +296,7 @@ const DesignConfigurator = ({
                     finish: options.finish.value,
                     material: options.material.value,
                     model: options.model.value,
-                  })
+                  } as ConfigImageType)
                 }
               >
                 Continue
