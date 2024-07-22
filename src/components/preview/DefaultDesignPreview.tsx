@@ -6,7 +6,7 @@ import Phone from "@/components/common/Phone";
 import { COLORS, FINISHES, MATERIALS, MODELS } from "@/constants/design";
 import { cn, formatPrice, getTotalPrice } from "@/lib/utils";
 import { ArrowRight, Check } from "lucide-react";
-import { BASE_PRICE, PRODUCT_PRICES } from "@/configs/product";
+import { BASE_PRICE } from "@/configs/product";
 import { Button } from "@/components/ui/button";
 import { useMutation } from "@tanstack/react-query";
 import { getCheckoutSession } from "@/actions/get-checkout-session";

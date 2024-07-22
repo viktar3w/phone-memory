@@ -5,7 +5,6 @@ import {
   DEFAULT_FINISH,
   DEFAULT_MATERIAL,
   DEFAULT_MODEL,
-  DesignItemType,
   SellingItemType,
 } from "@/constants/design";
 import { base64ToBlob } from "@/lib/image";
@@ -25,7 +24,7 @@ type SaveImageConfigurationProps = {
   };
 };
 type OptionType = {
-  [key: string]: SellingItemType
+  [key: string]: SellingItemType;
 };
 export const useSaveImageConfiguration = ({
   configId,
