@@ -15,7 +15,7 @@ enum CaseColor {
 }
 
 enum OrderStatus {
-  fullfiled
+  fulfilled
   shipped
   awaiting_shipment
 }

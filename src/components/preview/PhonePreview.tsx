@@ -1,7 +1,7 @@
 "use client";
 
 import { CaseColor } from "@prisma/client";
-import {memo, useEffect, useRef, useState} from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { cn } from "@/lib/utils";
 

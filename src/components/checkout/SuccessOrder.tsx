@@ -3,8 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { getPaymentStatus } from "@/actions/get-payment-status";
 import { memo } from "react";
 import { Loader2 } from "lucide-react";
-import PhonePreview from "@/components/review/PhonePreview";
-import {formatPrice} from "@/lib/utils";
+import PhonePreview from "@/components/preview/PhonePreview";
+import { formatPrice } from "@/lib/utils";
 
 type SuccessOrderProps = {
   orderId: string;

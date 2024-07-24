@@ -29,7 +29,7 @@ const DefaultNavbar = async () => {
                 </Link>
                 {isAdmin && (
                   <Link
-                    href="/"
+                    href="/dashboard"
                     className={buttonVariants({
                       size: "sm",
                       variant: "ghost",
