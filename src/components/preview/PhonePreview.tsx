@@ -14,7 +14,7 @@ const initRenderedProps = {
   height: 0,
 };
 const PhonePreview = ({ croppedImgUrl, color }: PhonePreviewProps) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const [renderedProps, setRenderedProps] =
     useState<typeof initRenderedProps>(initRenderedProps);
   const handleResize = () => {
