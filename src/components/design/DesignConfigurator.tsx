@@ -6,12 +6,7 @@ import { cn, formatPrice } from "@/lib/utils";
 import HandleComponent from "@/components/design/HandleComponent";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import {
-  COLORS,
-  MODELS,
-  FINISHES,
-  MATERIALS
-} from "@/constants/design";
+import { COLORS, MODELS, FINISHES, MATERIALS } from "@/constants/design";
 import { Label } from "@/components/ui/label";
 import {
   DropdownMenu,
@@ -48,6 +43,7 @@ const DesignConfigurator = ({
     phoneCaseRef,
     containerRef,
     saveConfig,
+    isPending,
   } = useSaveImageConfiguration({ configId, imgUrl, imgDimensions });
   // @ts-ignore
   return (
@@ -282,6 +278,9 @@ const DesignConfigurator = ({
                 )}
               </p>
               <Button
+                isLoading={isPending}
+                disabled={isPending}
+                loadingText="Saving..."
                 size="sm"
                 className="w-full"
                 onClick={() =>

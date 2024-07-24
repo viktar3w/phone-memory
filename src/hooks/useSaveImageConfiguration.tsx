@@ -33,7 +33,7 @@ export const useSaveImageConfiguration = ({
 }: SaveImageConfigurationProps) => {
   const { toast } = useToast();
   const { push } = useRouter();
-  const { mutate: saveConfig } = useMutation({
+  const { mutate: saveConfig, isPending } = useMutation({
     mutationKey: ["save-config"],
     mutationFn: async (args: ConfigImageType) => {
       await Promise.all([saveConfiguration(), _saveConfig(args)]);
@@ -120,5 +120,6 @@ export const useSaveImageConfiguration = ({
     phoneCaseRef,
     containerRef,
     saveConfig,
+    isPending
   };
 };

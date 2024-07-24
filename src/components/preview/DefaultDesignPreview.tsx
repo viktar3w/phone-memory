@@ -76,14 +76,17 @@ const DefaultDesignPreview = ({ configuration }: DefaultDesignPreviewProps) => {
         />
       </div>
       <LoginModal isOpen={isLoginModalOpen} setIsOpen={setIsLoginModalOpen} />
-      <div className="mt-20 grid grid-cols-1 text-sm sm:grid-cols-12 sm:grid-rows-1 sm:gap-x-6 md:gap-x-8 lg:gap-x-12">
-        <div className="sm:col-span-4 md:col-span-3 md:row-span-2 md:row-end-2">
+      <div className="mt-20 flex flex-col items-center md:grid text-sm sm:grid-cols-12 sm:grid-rows-1 sm:gap-x-6 md:gap-x-8 lg:gap-x-12">
+        <div className="md:col-span-4 lg:row-span-3 md:row-span-2 md:row-end-2">
           <Phone
-            className={cn(!!tw ? `bg-${tw}` : "")}
+            className={cn(
+              !!tw ? `bg-${tw}` : "",
+              "max-w-[150px] md:max-w-full",
+            )}
             imgSrc={configuration.croppedImageUrl!}
           />
         </div>
-        <div className="mt-6 sm:col-span-9 sm:mt-0 md:row-end-1">
+        <div className="mt-6 sm:col-span-9 md:row-end-1">
           <h3 className="text-3xl font-bold tracking-tight text-gray-900">
             Your {modelLabel} Case
           </h3>
@@ -125,7 +128,8 @@ const DefaultDesignPreview = ({ configuration }: DefaultDesignPreviewProps) => {
                     <p className="text-gray-600">Base price</p>
                     <p className="text-gray-900 font-medium">
                       {formatPrice(
-                          (FINISHES.options.find((o) => o.value === finish)?.price || 0) / 100,
+                        (FINISHES.options.find((o) => o.value === finish)
+                          ?.price || 0) / 100,
                       )}
                     </p>
                   </div>
@@ -135,7 +139,8 @@ const DefaultDesignPreview = ({ configuration }: DefaultDesignPreviewProps) => {
                     <p className="text-gray-600">Soft polycarbonate</p>
                     <p className="text-gray-900 font-medium">
                       {formatPrice(
-                        (MATERIALS.options.find((o) => o.value === material)?.price || 0) / 100,
+                        (MATERIALS.options.find((o) => o.value === material)
+                          ?.price || 0) / 100,
                       )}
                     </p>
                   </div>
